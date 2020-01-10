@@ -2,6 +2,7 @@ import json
 import urllib.request
 from api import *
 import ssl
+import os
 
 try:
     _create_unverified_https_context = ssl._create_unverified_context
@@ -24,8 +25,11 @@ jsonString=jsonString.replace("], [","\n")
 jsonString=jsonString.replace("[[", "")
 jsonString=jsonString.replace("]]", "")
 
+os.chdir(os.path.dirname(__file__))
+os.chdir("..")
+os.chdir("data")
 
 #write the modified json string to a text file
-textFile = open("PhilpapersTaxonomy.txt", "w")
-textFile.write(jsonString)
-textFile.close()
+with open("PhilpapersTaxonomy.txt", 'w') as f:
+    f.write(jsonString)
+    f.close()

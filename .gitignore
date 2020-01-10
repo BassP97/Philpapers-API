@@ -1,0 +1,7 @@
+
+data.json
+data/PhilpapersTaxonomy.txt
+src/api.py
+*.pyc
+data/.DS_Store
+PhilpapersTaxonomy.txt

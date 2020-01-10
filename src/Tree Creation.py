@@ -2,7 +2,12 @@ from anytree import Node, RenderTree, AnyNode
 from anytree.exporter import JsonExporter
 from csv import reader
 import json
+import os
+import pandas as pd
 
+os.chdir(os.path.dirname(__file__))
+os.chdir("..")
+os.chdir("data")
 philFile = open('PhilpapersTaxonomy.txt', 'r')
 
 nodes = {"1":Node("root")}
@@ -42,5 +47,7 @@ exporter = JsonExporter(indent=2, sort_keys=True)
 with open('data.json', 'w') as f:
     exporter.write(nodes["1"],f)
 
+data = pd.read_json("data.json")
+df = pd.DataFrame(data['children'])
 #uncomment to check tree contents
 #print(exporter.export(nodes["1"]))
