@@ -34,7 +34,7 @@ def run(server_class=HTTPServer, handler_class=Server, port=8008):
     print("Starting httpd port", port)
     httpd.serve_forever()
     
-if __name__ == "__main__":
+def startServer():
     from sys import argv
     if len(argv) == 2:
         run(port=int(argv[1]))
